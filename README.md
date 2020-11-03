@@ -25,9 +25,10 @@ npm install
 ```
 
 Finally create a file .env at your project root to provide your Cesium ion key:
+
 <sup>_an example of .env is provided in .env.example_</sup>
 ```js
-VUE_APP_CESIUM_ION_TOKEN=**YOUR_CESIUM_ION_KEY**
+VUE_APP_CESIUM_ION_TOKEN=YOUR_CESIUM_ION_KEY
 ```
 
 ## Run
