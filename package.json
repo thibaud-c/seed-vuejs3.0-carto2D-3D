@@ -10,7 +10,7 @@
   "dependencies": {
     "axios": "^0.21.0",
     "bulma": "^0.9.1",
-    "cesium": "^1.74.0",
+    "cesium": "^1.75.0",
     "core-js": "^3.6.5",
     "leaflet": "^1.7.1",
     "ol": "^6.4.3",

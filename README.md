@@ -5,7 +5,7 @@ It includes :
 - vuejs: 3.0
     - vue-router
     - axios
-- cesium: 1.74
+- cesium: 1.75
 - leaflet: 1.7.1
 - Openlayers: 6.4.3
 
