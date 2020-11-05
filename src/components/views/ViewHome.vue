@@ -6,7 +6,7 @@
 export default {
   data(){
     return{
-      hellomessage:"Hello MDT-GIO-1 !!"
+      hellomessage:"Hello World !!"
     }
   }
 }

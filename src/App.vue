@@ -3,11 +3,8 @@
   <!-- Bulma: menu tabs -->
   <div class="tabs is-centered">
     <ul>
-      <li v-for="menu in menulist" :key="menu.name" :class="{ 'is-active': currentPage === menu.name }">
-        <!-- use span to use @click on router without page refresh-->
-        <span @click="updateCurentPage(menu.name)">
-          <router-link :to="menu.route"> {{menu.name}} </router-link>
-        </span>
+      <li v-for="menu in menulist" :key="menu.name" :class="{ 'is-active': currentRoute === menu.route }">
+          <router-link :to="menu.route"> {{menu.menuname}} </router-link>
       </li>
     </ul>
   </div>
@@ -16,47 +13,39 @@
 </template>
 
 <script>
-
 export default {
   name: 'App',
   data(){
     return {
-      currentPage: "Hello",
       menulist:[
-        { 
-          name:"Hello",
+        {
+          menuname:"Hello",
           route:"/"
         },
         { 
-          name:"Axios",
+          menuname:"Axios",
           route:"/axios"
         },
         { 
-          name:"2d_openlayers",
+          menuname:"2d_openlayers",
           route:"/openlayers"
         },
         { 
-          name:"2d_leaflet",
+          menuname:"2d_leaflet",
           route:"/leaflet"
         },
         { 
-          name:"3d_cesium",
+          menuname:"3d_cesium",
           route:"/cesium"
         }
       ] 
     }
   },
-  methods: {
-    /**
-     * Update the curent router page
-     * 
-     * @param {String} pageName Name of the page that have been clicked.
-     * @return {undefined}
-     */
-    updateCurentPage(pageName) {
-      this.currentPage = pageName;
+  computed: {
+    currentRoute(){
+      return this.$route.path;
     }
-  } 
+  }
 }
 </script>
 

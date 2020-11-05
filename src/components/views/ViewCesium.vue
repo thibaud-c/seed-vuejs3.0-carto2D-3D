@@ -2,10 +2,9 @@
   <div id="cesium-container"></div>
 </template>
 
-<script >
-import * as Cesium from 'cesium';
+<script>
 import "cesium/Build/Cesium/Widgets/widgets.css";
-
+import * as Cesium from 'cesium';
 
 export default {
   name: "CesiumGlobeView",
@@ -38,14 +37,9 @@ export default {
       let viewer = new Cesium.Viewer('cesium-container', {
         terrainProvider: new Cesium.createWorldTerrain()
       });
-      let tileset = new Cesium.Cesium3DTileset({
-          url: Cesium.IonResource.fromAssetId(40866)
-      });
-      viewer.scene.primitives.add(tileset);
-      viewer.zoomTo(tileset);
       viewer.scene.primitives.add(Cesium.createOsmBuildings());
       return viewer;
-  }
+    }
   },
   mounted() {
     // add cesium ion token to the app
