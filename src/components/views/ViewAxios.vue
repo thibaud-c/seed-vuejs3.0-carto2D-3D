@@ -1,9 +1,8 @@
 <template>
-  <!-- Bulma: menu tabs -->
   <div id="trump-card" class="card">
     <div class="card-content">
       <p class="title">
-        “{{trumpquote}}”
+        “{{trumpQuote}}”
       </p>
       <p class="subtitle">
         Tronald Dump
@@ -17,19 +16,19 @@
       </p>
     </footer>
   </div>
-  <!-- end Bulma: menu tabs -->
 </template>
 
 <script>
 import axios from 'axios'
 
 export default {
+  name: 'dump-fact',
   data(){
     return{
       tronalddumpURL:"https://www.tronalddump.io/",
       apiURL:"https://api.tronalddump.io/search/quote?query=",
       query:"apologize",
-      trumpquote:""
+      trumpQuote:""
     }
   },
   methods: {
@@ -41,27 +40,31 @@ export default {
      * @returns {Promise<String>} quote from the API || default string if quote not found || default string if error
      * @catch error from the request 
      */
-    async getTrumptweet(url,query){
-      let response = await axios.get(url+query)
-      .catch(error => {
-        console.error(error);
-        return 0
-      })
-      //request error
-      if(response == 0){
-        return "Ouch an error occurred"
+    async getTrumpTweet(url,query){
+
+      const response = await axios.get(url+query)
+
+      // response status handling: success & error
+      if (response.status == 200 && response.data.count>0){
+        // Get & return first quote
+        return response.data._embedded.quotes[0].value;
       }
-      // don't find an answer
-      if(response.data.count == 0){
-        return "Didn't found any answers"
+
+      if (response.status == 404){
+        throw "Didn't find any answers";
       }
-      // Get first quote
-      return response.data._embedded.quotes[0].value;
-    }
+      else {
+        throw "Ouch an unknown error occurred";
+      } 
+    },    
   },
   async mounted() {
-    this.trumpquote = await this.getTrumptweet(this.apiURL,this.query)
-  },
+    try {
+      this.trumpQuote = await this.getTrumpTweet(this.apiURL,this.query)
+    } catch(e) {
+      console.error(e);
+    }
+  }
 }
 </script>
 

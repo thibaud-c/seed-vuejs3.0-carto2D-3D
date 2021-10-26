@@ -2,12 +2,12 @@
 
 This is a basic starter project for a Vuejs 3.0 app (via vue-cli). 
 It includes :
-- vuejs: 3.0
+- vuejs: 3.2
     - vue-router
     - axios
-- cesium: 1.75
+- cesium: 1.85
 - leaflet: 1.7.1
-- Openlayers: 6.4.3
+- Openlayers: 6.9.0
 
 ## Installation
 

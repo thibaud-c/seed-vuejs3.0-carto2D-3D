@@ -3,8 +3,8 @@
   <!-- Bulma: menu tabs -->
   <div class="tabs is-centered">
     <ul>
-      <li v-for="menu in menulist" :key="menu.name" :class="{ 'is-active': currentRoute === menu.route }">
-          <router-link :to="menu.route"> {{menu.menuname}} </router-link>
+      <li v-for="menu in menuList" :key="menu.name" :class="{ 'is-active': currentRoute === menu.route }">
+          <router-link :to="menu.route"> {{ menu.menuname }} </router-link>
       </li>
     </ul>
   </div>
@@ -14,10 +14,10 @@
 
 <script>
 export default {
-  name: 'App',
+  name: 'App-root',
   data(){
     return {
-      menulist:[
+      menuList:[
         {
           menuname:"Hello",
           route:"/"
